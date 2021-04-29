@@ -1,39 +1,61 @@
-import React, { Component, useState } from 'react';
-import { Link, Route } from 'react-router-dom';
-import { Button, Card, CardBody, CardDeck, CardFooter, CardHeader, CardImg, CardImgOverlay, CardTitle, InputGroup, Label } from 'reactstrap'
+import React, { Component, useState } from 'react'
+import { Badge, Button, ButtonGroup, Card } from 'reactstrap'
 import styled from 'styled-components';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import { Delete } from '@material-ui/icons';
 
+const Favourite = (item) =>{
+    console.log("one")
+}
 
 const Movie= ({item}) =>{
+    const [fav, setFav] = useState([])
+
     const viewMovie = () =>{
         const url = "https://www.themoviedb.org/movie/"+ item.id
         window.location.href = url
     }
+
+    const Favorite = ({e}) =>{
+        e.preventDefault()
+        console.log(e)
+    }
         return (
             <div>
-                <Card key={item.id} style={{width:"220px"}} className="m-4">
+                <Cards key={item.id}  className="m-2">
                 
-               
-                <Button color="info" className="m-2" onClick={viewMovie} > 
-                 Check it out 
-                </Button>
-        
-                <CardImg className="m-2" style={{width:"200px", height:"200px"}}
+                <ButtonGroup>
+                    <Button color="info"  className="m-1" onClick={viewMovie}> 
+                    Check it out 
+                    </Button>
+                    <Button color="danger" type="submit" onSubmit={Favorite} className="m-1"><FavoriteIcon/></Button>
+                    <Button color="danger"   className="m-1" style={{display:'none'}}><Delete/></Button>
+                </ButtonGroup>
+                
+                <img className="m-2" style={{width:"200px", height:"200px"}}
                  src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title}/>
-                 {/* <Desc>{item.overview}</Desc> */}
                    
-                <CardHeader tag="h6">{item.title}</CardHeader>
+                   <p><center>{item.title}<Badge style={{backgroundColor:'palevioletred' , fontFamily: 'monospace'}} className="ml-2">{item.vote_average}</Badge></center></p> 
+                
                 
                
-        </Card>
+        </Cards>
          
             </div>
         )          
 }
 
-// const Desc = styled.p`
-//     font-size: 10px;
-//     float: right;
-// `;
+const Cards = styled(Card)`
+    width: 220px;
+    height: 350px;
+
+
+   
+`;
+
+const Desc = styled.p`
+    font-size: 10px;
+    
+`;
 
 export default Movie;
