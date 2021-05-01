@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App-header">
       <Switch>
+      
       <Route path="/" component={MovieContainer} exact />
       
       
