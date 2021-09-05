@@ -19,7 +19,7 @@ function MovieContainer (){
 
     return(
         <div >
-           <Route>
+           
             <div>
                <h3 style={{color:"white", marginBottom: '20px'}}>React Movies App</h3>
 
@@ -31,7 +31,7 @@ function MovieContainer (){
                
                </div> 
            
-           </Route>
+          
         </div>
     )
 }
